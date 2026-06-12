@@ -10,6 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Limpieza/Components/LimpiezaComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -52,6 +53,9 @@ ATP1TNFCharacter::ATP1TNFCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+	
+	LimpiezaComponent = CreateDefaultSubobject<ULimpiezaComponent>(TEXT("LimpiezaComponent"));
+	
 }
 
 void ATP1TNFCharacter::BeginPlay()
@@ -86,6 +90,12 @@ void ATP1TNFCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ATP1TNFCharacter::Look);
+		
+		// Limpiar
+		EnhancedInputComponent->BindAction(LimpiarAction, ETriggerEvent::Started, this, &ATP1TNFCharacter::IniciarLimpiar);
+		
+		EnhancedInputComponent->BindAction(LimpiarAction, ETriggerEvent::Completed, this, &ATP1TNFCharacter::DetenerLimpiar);
+		
 	}
 	else
 	{
@@ -126,5 +136,23 @@ void ATP1TNFCharacter::Look(const FInputActionValue& Value)
 		// add yaw and pitch input to controller
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
+	}
+}
+
+void ATP1TNFCharacter::IniciarLimpiar(const FInputActionValue& Value)
+{
+	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Limpiar"));
+	
+	if (LimpiezaComponent)
+	{
+		LimpiezaComponent->UsarLimpiar();
+	}
+}
+
+void ATP1TNFCharacter::DetenerLimpiar(const FInputActionValue& Value)
+{
+	if (LimpiezaComponent)
+	{
+		LimpiezaComponent->PararLimpiar();
 	}
 }

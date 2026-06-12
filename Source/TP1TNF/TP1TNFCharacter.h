@@ -7,6 +7,7 @@
 #include "Logging/LogMacros.h"
 #include "TP1TNFCharacter.generated.h"
 
+class ULimpiezaComponent;
 class USpringArmComponent;
 class UCameraComponent;
 class UInputMappingContext;
@@ -19,7 +20,7 @@ UCLASS(config=Game)
 class ATP1TNFCharacter : public ACharacter
 {
 	GENERATED_BODY()
-
+public:
 	/** Camera boom positioning the camera behind the character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* CameraBoom;
@@ -43,11 +44,17 @@ class ATP1TNFCharacter : public ACharacter
 	/** Look Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
+	
+	/** Limpiar Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* LimpiarAction;
 
 public:
 	ATP1TNFCharacter();
 	
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Limpieza)
+	TObjectPtr<ULimpiezaComponent> LimpiezaComponent;
+	
 protected:
 
 	/** Called for movement input */
@@ -55,7 +62,12 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
-			
+	
+	/** Called for iniciar limpiar input */
+	void IniciarLimpiar(const FInputActionValue& Value);
+	
+	/** Called for detener limpiar input */
+	void DetenerLimpiar(const FInputActionValue& Value);
 
 protected:
 	// APawn interface
