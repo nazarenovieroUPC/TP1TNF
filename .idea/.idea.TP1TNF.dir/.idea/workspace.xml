@@ -25,14 +25,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="cidr-memory-view://1" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TP1TNF/Private/RepararComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TP1TNF/Private/RepararInterface.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TP1TNF/Private/actores/CosaReparar.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TP1TNF/Public/RepararComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TP1TNF/Public/RepararInterface.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TP1TNF/Public/actores/CosaReparar.h" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3ExwM0jDjbPSvxUHCTSqanOkxU2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -47,11 +56,11 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Uproject.TP1TNF.executor": "Debug",
+    "Uproject.TP1TNF.executor": "Run",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "TP1__puzzle__Adriel",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -68,10 +77,10 @@
         <option name="CONFIGURATION" value="DebugGame Editor" />
         <option name="PLATFORM" value="Win64" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
-        <option name="EXECUTABLE_PATH" value="$PROJECT_DIR$/../../UE_5.4/Engine/Binaries/Win64/UnrealEditor-Win64-DebugGame.exe" />
-        <option name="MANDATORY_PROGRAM_PARAMETERS" value=" &quot;S:\ProyectosUnreal\TP1TNF\TP1TNF.uproject&quot;" />
+        <option name="EXECUTABLE_PATH" value="D:/juegos/UE_5.4/Engine/Binaries/Win64/UnrealEditor-Win64-DebugGame.exe" />
+        <option name="MANDATORY_PROGRAM_PARAMETERS" value=" &quot;E:\Unreal Projects\TP1TNF\TP1TNF.uproject&quot;" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
-        <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../UE_5.4" />
+        <option name="WORKING_DIRECTORY" value="D:/juegos/UE_5.4" />
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="1" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="FORCE_CONSOLE" />
@@ -84,7 +93,7 @@
         <option name="EXECUTABLE_PATH" value="$PROJECT_DIR$/Binaries/Win64/TP1TNF-Win64-DebugGame.exe" />
         <option name="MANDATORY_PROGRAM_PARAMETERS" value="" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
-        <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../UE_5.4" />
+        <option name="WORKING_DIRECTORY" value="D:/juegos/UE_5.4" />
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="1" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="FORCE_CONSOLE" />
@@ -94,10 +103,10 @@
         <option name="CONFIGURATION" value="Development Editor" />
         <option name="PLATFORM" value="Win64" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
-        <option name="EXECUTABLE_PATH" value="$PROJECT_DIR$/../../UE_5.4/Engine/Binaries/Win64/UnrealEditor.exe" />
-        <option name="MANDATORY_PROGRAM_PARAMETERS" value=" &quot;S:\ProyectosUnreal\TP1TNF\TP1TNF.uproject&quot;" />
+        <option name="EXECUTABLE_PATH" value="D:/juegos/UE_5.4/Engine/Binaries/Win64/UnrealEditor.exe" />
+        <option name="MANDATORY_PROGRAM_PARAMETERS" value=" &quot;E:\Unreal Projects\TP1TNF\TP1TNF.uproject&quot;" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
-        <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../UE_5.4" />
+        <option name="WORKING_DIRECTORY" value="D:/juegos/UE_5.4" />
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="1" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="FORCE_CONSOLE" />
@@ -110,7 +119,7 @@
         <option name="EXECUTABLE_PATH" value="$PROJECT_DIR$/Binaries/Win64/TP1TNF.exe" />
         <option name="MANDATORY_PROGRAM_PARAMETERS" value="" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
-        <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../UE_5.4" />
+        <option name="WORKING_DIRECTORY" value="D:/juegos/UE_5.4" />
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="1" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="FORCE_CONSOLE" />
@@ -123,7 +132,7 @@
         <option name="EXECUTABLE_PATH" value="$PROJECT_DIR$/Binaries/Win64/TP1TNF-Win64-Shipping.exe" />
         <option name="MANDATORY_PROGRAM_PARAMETERS" value="" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
-        <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../UE_5.4" />
+        <option name="WORKING_DIRECTORY" value="D:/juegos/UE_5.4" />
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="1" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="FORCE_CONSOLE" />
@@ -145,6 +154,9 @@
       <option name="presentableId" value="Default" />
       <updated>1781133480292</updated>
       <workItem from="1781133486188" duration="1501000" />
+      <workItem from="1781146479710" duration="136000" />
+      <workItem from="1781146656338" duration="3394000" />
+      <workItem from="1781555090482" duration="8823000" />
     </task>
     <servers />
   </component>

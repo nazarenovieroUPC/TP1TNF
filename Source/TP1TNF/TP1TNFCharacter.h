@@ -43,6 +43,10 @@ class ATP1TNFCharacter : public ACharacter
 	/** Look Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
+	
+	/** Look Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* RepararAction;
 
 public:
 	ATP1TNFCharacter();
@@ -55,7 +59,12 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
+	
+	/** Called for looking input */
+	
+	void Reparar(const FInputActionValue& Value);
 			
+	
 
 protected:
 	// APawn interface
@@ -63,11 +72,28 @@ protected:
 	
 	// To add mapping context
 	virtual void BeginPlay();
+	
+	FTimerHandle TimerHandle_Reparar;
 
 public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+	
+	//macros para el unreal
+	
+	UPROPERTY(BlueprintReadWrite,EditAnywhere)
+	float CantidadReparado = 20;
+	
+	
+	
+	UFUNCTION(BlueprintCallable)
+	
+	void TimerReparar();
+	
+	
+	
+	
 };
 

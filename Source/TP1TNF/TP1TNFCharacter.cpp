@@ -10,6 +10,8 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "RepararInterface.h"
+#include "TimerManager.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -60,6 +62,40 @@ void ATP1TNFCharacter::BeginPlay()
 	Super::BeginPlay();
 }
 
+void ATP1TNFCharacter::TimerReparar()
+{
+	FVector Iniciorayo = FollowCamera->GetComponentLocation();
+	FVector ForwardDirection = FollowCamera->GetForwardVector();
+	FVector Finrayo = Iniciorayo + (ForwardDirection * 1000.f);
+
+	FHitResult TraceResult;
+	FCollisionQueryParams ParametrosColision;
+	ParametrosColision.AddIgnoredActor(GetOwner());
+
+	bool bHit = GetWorld()->LineTraceSingleByChannel(
+		TraceResult,
+		Iniciorayo,
+		Finrayo,
+		ECC_Visibility,
+		ParametrosColision
+		);
+	DrawDebugLine(GetOwner()->GetWorld(), Iniciorayo, Finrayo, FColor::Green, false, 1.f, 2.0f);
+	
+	if (bHit)
+	{
+		DrawDebugPoint(GetOwner()->GetWorld(), TraceResult.ImpactPoint, 10.f, FColor::Blue, false, 0.5f);
+
+		AActor* HitedActor = TraceResult.GetActor();
+
+		if (HitedActor && HitedActor->Implements<URepararInterface>())
+		{
+			//if (HitedActor->Implements<ULimpiarInterface>()) 
+			IRepararInterface::Execute_SerReparado(HitedActor, CantidadReparado);
+		}
+	}
+}
+
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 
@@ -86,6 +122,9 @@ void ATP1TNFCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ATP1TNFCharacter::Look);
+		
+		// Reparar
+		EnhancedInputComponent->BindAction(RepararAction, ETriggerEvent::Triggered, this, &ATP1TNFCharacter::Reparar);
 	}
 	else
 	{
@@ -127,4 +166,10 @@ void ATP1TNFCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void ATP1TNFCharacter::Reparar(const FInputActionValue& Value)
+	
+{
+	GetWorldTimerManager().SetTimer(TimerHandle_Reparar, this, &ATP1TNFCharacter::TimerReparar, 2.0f, true);
 }
