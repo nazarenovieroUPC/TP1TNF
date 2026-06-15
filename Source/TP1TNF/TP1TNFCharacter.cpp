@@ -141,7 +141,6 @@ void ATP1TNFCharacter::Look(const FInputActionValue& Value)
 
 void ATP1TNFCharacter::IniciarLimpiar(const FInputActionValue& Value)
 {
-	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Limpiar"));
 	
 	if (LimpiezaComponent)
 	{
