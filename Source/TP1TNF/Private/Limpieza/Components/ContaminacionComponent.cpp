@@ -48,6 +48,8 @@ void UContaminacionComponent::LimpiarContaminacion(float CantidadLimpiar)
 	else
 	{
 		bCurado = true;
+		
+		OnContaminacionCurada.Broadcast();
 	}
 }
 

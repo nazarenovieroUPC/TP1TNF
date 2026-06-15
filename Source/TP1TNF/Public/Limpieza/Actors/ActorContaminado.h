@@ -18,25 +18,18 @@ public:
 	// Sets default values for this actor's properties
 	AActorContaminado();
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Componentes")
-	UStaticMeshComponent* MeshComponent;
-	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Contaminacion)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Material")
 	TObjectPtr<UMaterialInstanceDynamic> MaterialInstanceDynamic;
-	
 	
 	//Components
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Componentes")
 	TObjectPtr<UContaminacionComponent> ContaminacionComponent; 
-	
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 	
 	virtual void SerLimpiado_Implementation(float CantidadLimpiar) override;
 	

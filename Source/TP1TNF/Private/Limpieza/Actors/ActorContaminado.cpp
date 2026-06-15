@@ -11,10 +11,7 @@
 AActorContaminado::AActorContaminado()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-	
-	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>("MeshComponent");
-	RootComponent = MeshComponent;
+	PrimaryActorTick.bCanEverTick = false;
 	
 	ContaminacionComponent = CreateDefaultSubobject<UContaminacionComponent>("ContaminacionComponent");
 }
@@ -24,16 +21,9 @@ void AActorContaminado::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	if (MeshComponent) MaterialInstanceDynamic = MeshComponent->CreateAndSetMaterialInstanceDynamic(0);
-	
 	if (ContaminacionComponent) ContaminacionComponent->OnPorcentajeCambiando.AddDynamic(this, &AActorContaminado::ActualizarContaminacion);
 }
 
-// Called every frame
-void AActorContaminado::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-}
 
 void AActorContaminado::SerLimpiado_Implementation(float CantidadLimpiar)
 {
@@ -46,7 +36,7 @@ void AActorContaminado::ActualizarContaminacion(float PorcentajeContaminacion)
 {
 	if (MaterialInstanceDynamic)
 	{
-		MaterialInstanceDynamic->SetScalarParameterValue(TEXT("NivelContaminacion"), PorcentajeContaminacion);
+		MaterialInstanceDynamic->SetScalarParameterValue("NivelContaminacion", PorcentajeContaminacion);
 	}
 }
 

@@ -7,7 +7,6 @@
 #include "Components/ActorComponent.h"
 #include "LimpiezaComponent.generated.h"
 
-
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class TP1TNF_API ULimpiezaComponent : public UActorComponent
 {

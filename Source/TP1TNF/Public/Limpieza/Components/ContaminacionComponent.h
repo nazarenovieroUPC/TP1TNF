@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "Limpieza/Interfaces/LimpiarInterface.h"
 #include "ContaminacionComponent.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPorcentajeContaminacionCambiado, float, PorcentajeContaminacion);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnContaminacionCurada);
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class TP1TNF_API UContaminacionComponent : public UActorComponent
@@ -26,6 +26,9 @@ public:
 	
 	UPROPERTY(BlueprintAssignable, Category = "Eventos Limpieza")
 	FOnPorcentajeContaminacionCambiado OnPorcentajeCambiando;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Eventos Limpieza")
+	FOnContaminacionCurada OnContaminacionCurada;
 	
 protected:
 	// Called when the game starts
