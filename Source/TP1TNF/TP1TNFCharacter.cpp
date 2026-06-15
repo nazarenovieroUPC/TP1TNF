@@ -93,6 +93,7 @@ void ATP1TNFCharacter::TimerReparar()
 			IRepararInterface::Execute_SerReparado(HitedActor, CantidadReparado);
 		}
 	}
+	GetWorld()->GetTimerManager().ClearTimer(TimerHandle_Reparar);
 }
 
 
@@ -124,7 +125,7 @@ void ATP1TNFCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ATP1TNFCharacter::Look);
 		
 		// Reparar
-		EnhancedInputComponent->BindAction(RepararAction, ETriggerEvent::Triggered, this, &ATP1TNFCharacter::Reparar);
+		EnhancedInputComponent->BindAction(RepararAction, ETriggerEvent::Started, this, &ATP1TNFCharacter::Reparar);
 	}
 	else
 	{
@@ -171,5 +172,10 @@ void ATP1TNFCharacter::Look(const FInputActionValue& Value)
 void ATP1TNFCharacter::Reparar(const FInputActionValue& Value)
 	
 {
-	GetWorldTimerManager().SetTimer(TimerHandle_Reparar, this, &ATP1TNFCharacter::TimerReparar, 2.0f, true);
+	if (GetWorld()->GetTimerManager().IsTimerActive(TimerHandle_Reparar))
+        {
+            return;
+        }
+    
+        GetWorldTimerManager().SetTimer(TimerHandle_Reparar, this, &ATP1TNFCharacter::TimerReparar, 0.5f, false);
 }
