@@ -10,6 +10,9 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "EnhancedInputComponent.h"
+#include "TP1TNF/Public/1D/Components/SignalScannerComponent.h"
+#include "TP1TNF/Public/1D/Components/CodexComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -49,6 +52,9 @@ ATP1TNFCharacter::ATP1TNFCharacter()
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+	
+	ScannerComponent = CreateDefaultSubobject<USignalScannerComponent>(TEXT("ScannerComponent"));
+	CodexComponent = CreateDefaultSubobject<UCodexComponent>(TEXT("CodexComponent"));
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
@@ -62,6 +68,22 @@ void ATP1TNFCharacter::BeginPlay()
 
 //////////////////////////////////////////////////////////////////////////
 // Input
+
+void ATP1TNFCharacter::Input_StartScan()
+{
+	if (ScannerComponent)
+	{
+		ScannerComponent->StartScanning();
+	}
+}
+
+void ATP1TNFCharacter::Input_StopScan()
+{
+	if (ScannerComponent)
+	{
+		ScannerComponent->StopScanning();
+	}
+}
 
 void ATP1TNFCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -86,6 +108,15 @@ void ATP1TNFCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ATP1TNFCharacter::Look);
+		
+		if (ScanAction)
+		{
+			EnhancedInputComponent->BindAction(ScanAction, ETriggerEvent::Started, this, &ATP1TNFCharacter::Input_StartScan);
+			
+			EnhancedInputComponent->BindAction(ScanAction, ETriggerEvent::Completed, this, &ATP1TNFCharacter::Input_StopScan);
+			
+			EnhancedInputComponent->BindAction(ScanAction, ETriggerEvent::Canceled, this, &ATP1TNFCharacter::Input_StopScan);
+		}
 	}
 	else
 	{
