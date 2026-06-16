@@ -3,6 +3,7 @@
 
 #include "TP1TNF/Public/Limpieza/Components/ContaminacionComponent.h"
 
+#include "Limpieza/Interfaces/CodiceLimpiezaInterface.h"
 #include "TP1TNF/TP1TNFGameMode.h"
 
 
@@ -30,25 +31,31 @@ void UContaminacionComponent::BeginPlay()
 	{
 		IContaminacionMundoInterface::Execute_RegistrarObjetoContaminado(GameMode, this);
 	}
+	
 }
 
 void UContaminacionComponent::LimpiarContaminacion(float CantidadLimpiar)
 {
 	
-	if (bCurado) return;
+	if (DatosContaminacion.bCurado) return;
 	
-	if (CantidadContaminacion > 0 && !bCurado){
-		CantidadContaminacion -= CantidadLimpiar;
+	if (DatosContaminacion.CantidadContaminacion > 0 && !DatosContaminacion.bCurado){
+		DatosContaminacion.CantidadContaminacion -= CantidadLimpiar;
 		
-		float PorcentajeContaminacion = CantidadContaminacion / 100.f;
+		float PorcentajeContaminacion = DatosContaminacion.CantidadContaminacion / 100.f;
 		
 		OnPorcentajeCambiando.Broadcast(PorcentajeContaminacion);
 	}
 	else
 	{
-		bCurado = true;
+		DatosContaminacion.bCurado = true;
 		
 		OnContaminacionCurada.Broadcast();
+		
+		if (UGameInstance* GameInstance = GetWorld()->GetGameInstance())
+		{
+			if (GameInstance->Implements<UCodiceLimpiezaInterface>()) ICodiceLimpiezaInterface::Execute_DesbloquearEntrada(GameInstance, DatosContaminacion.IDContaminacion);
+		}
 	}
 }
 

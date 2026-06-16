@@ -24,6 +24,8 @@ ACharcoContaminado::ACharcoContaminado()
 	CollisionBox->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
 	
 	CharcoDecal->DecalSize = FVector(64.0f, 128.0f, 128.0f);
+	
+	ContaminacionComponent->DatosContaminacion.IDContaminacion = FName("CharcoContaminado");
 }
 
 // Called when the game starts or when spawned
@@ -34,6 +36,8 @@ void ACharcoContaminado::BeginPlay()
 	Super::BeginPlay();
 	
 	ContaminacionComponent->OnContaminacionCurada.AddDynamic(this, &ACharcoContaminado::DestruirCurado);
+	
+	
 }
 
 void ACharcoContaminado::DestruirCurado()

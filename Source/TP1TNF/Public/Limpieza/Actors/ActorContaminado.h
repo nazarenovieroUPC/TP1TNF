@@ -21,7 +21,6 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Material")
 	TObjectPtr<UMaterialInstanceDynamic> MaterialInstanceDynamic;
 	
-	//Components
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Componentes")
 	TObjectPtr<UContaminacionComponent> ContaminacionComponent; 
 

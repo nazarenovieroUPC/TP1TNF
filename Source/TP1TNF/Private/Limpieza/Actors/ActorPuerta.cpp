@@ -2,10 +2,7 @@
 
 
 #include "Limpieza/Actors/ActorPuerta.h"
-
-#include "Components/BoxComponent.h"
 #include "TP1TNF/TP1TNFGameMode.h"
-
 
 // Sets default values
 AActorPuerta::AActorPuerta()
@@ -38,7 +35,6 @@ void AActorPuerta::Tick(float DeltaTime)
 
 void AActorPuerta::AbrirPuerta(float PorcentajeContaminacion)
 {
-	if(GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Emerald, FString::Printf(TEXT("porcentaje: %f"), PorcentajeContaminacion));
 	if (PorcentajeContaminacion <= 0.f)
 	{
 		this->Destroy();

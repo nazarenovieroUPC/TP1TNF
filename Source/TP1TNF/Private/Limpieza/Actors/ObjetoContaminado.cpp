@@ -3,6 +3,7 @@
 
 #include "Limpieza/Actors/ObjetoContaminado.h"
 
+#include "Limpieza/Components/ContaminacionComponent.h"
 
 // Sets default values
 AObjetoContaminado::AObjetoContaminado()
@@ -12,6 +13,8 @@ AObjetoContaminado::AObjetoContaminado()
 	
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>("MeshComponent");
 	RootComponent = MeshComponent;
+	
+	ContaminacionComponent->DatosContaminacion.IDContaminacion = FName("CristalContaminado");
 }
 
 // Called when the game starts or when spawned

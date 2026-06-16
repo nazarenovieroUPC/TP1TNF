@@ -11,6 +11,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Limpieza/Components/LimpiezaComponent.h"
+#include "Limpieza/Interfaces/CodiceLimpiezaInterface.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -96,6 +97,9 @@ void ATP1TNFCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 		
 		EnhancedInputComponent->BindAction(LimpiarAction, ETriggerEvent::Completed, this, &ATP1TNFCharacter::DetenerLimpiar);
 		
+		// Mostrar Codice
+		EnhancedInputComponent->BindAction(MostrarCodiceAction, ETriggerEvent::Completed, this, &ATP1TNFCharacter::MostrarCodice);
+		
 	}
 	else
 	{
@@ -153,5 +157,13 @@ void ATP1TNFCharacter::DetenerLimpiar(const FInputActionValue& Value)
 	if (LimpiezaComponent)
 	{
 		LimpiezaComponent->PararLimpiar();
+	}
+}
+
+void ATP1TNFCharacter::MostrarCodice(const FInputActionValue& Value)
+{
+	if (UGameInstance* GameInstance = GetWorld()->GetGameInstance())
+	{
+		if (GameInstance->Implements<UCodiceLimpiezaInterface>()) ICodiceLimpiezaInterface::Execute_MostrarCodice(GameInstance);
 	}
 }

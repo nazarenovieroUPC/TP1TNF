@@ -48,6 +48,10 @@ public:
 	/** Limpiar Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LimpiarAction;
+	
+	/** MostrarCodice Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* MostrarCodiceAction;
 
 public:
 	ATP1TNFCharacter();
@@ -68,6 +72,9 @@ protected:
 	
 	/** Called for detener limpiar input */
 	void DetenerLimpiar(const FInputActionValue& Value);
+	
+	/** Called for mostrar codice input */
+	void MostrarCodice(const FInputActionValue& Value);
 
 protected:
 	// APawn interface
