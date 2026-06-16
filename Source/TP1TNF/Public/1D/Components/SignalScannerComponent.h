@@ -36,9 +36,6 @@ public:
 	void PerformScan();
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Scanner")
-	float ScanDuration;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Scanner")
 	float ScanRange;
 	UPROPERTY(BlueprintAssignable, Category = "Scanner|Events")
 	FOnSignalDetected OnSignalDetected;
@@ -54,5 +51,5 @@ private:
 	
 	FTimerHandle ScanTimerHandle;
 	
-	float CurrentScanProgress;
+	float MaxLockOnDistance;
 };

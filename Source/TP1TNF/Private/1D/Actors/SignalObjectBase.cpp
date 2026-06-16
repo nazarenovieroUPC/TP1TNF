@@ -31,7 +31,9 @@ void ASignalObjectBase::OnScanCompleted()
 	{
 		bIsScanned = true;
 		
-		UE_LOG(LogTemp, Warning, TEXT("Escaneo completado."));
+		SetActorHiddenInGame(false);
+		
+		UE_LOG(LogTemp, Warning, TEXT("El objeto %s ha sido escaneado al 100%% y ahora es visible"), *DatosDelObjeto.NombreObjeto.ToString());
 		
 		BP_OnFeedbackScanCompleted();
 	}
@@ -45,6 +47,7 @@ void ASignalObjectBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	SetActorHiddenInGame(true);
 }
 
 void ASignalObjectBase::Tick(float DeltaTime)

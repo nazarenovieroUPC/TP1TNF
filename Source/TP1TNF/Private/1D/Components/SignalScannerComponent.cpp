@@ -10,8 +10,6 @@ USignalScannerComponent::USignalScannerComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
 	ScanRange = 2000.0f;
-	ScanDuration = 5.0f;
-	CurrentScanProgress = 0.0f;
 	CurrentTarget = nullptr;
 }
 
@@ -35,13 +33,12 @@ void USignalScannerComponent::StopScanning()
 {
 	GetWorld()->GetTimerManager().ClearTimer(ScanTimerHandle);
 	
-	if (CurrentScanProgress > 0.0f)
+	if (CurrentTarget != nullptr)
 	{
 		OnScanLost.Broadcast();
 	}
 	
 	CurrentTarget = nullptr;
-	CurrentScanProgress = 0.0f;
 }
 
 void USignalScannerComponent::PerformScan()
@@ -67,16 +64,19 @@ void USignalScannerComponent::PerformScan()
 		
 		if (TargetInterface)
 		{
+			float DistanciaReal = FVector::Dist(GetOwner()->GetActorLocation(), HitActor->GetActorLocation());
+			
 			if (CurrentTarget != HitActor)
 			{
 				CurrentTarget = HitActor;
-				CurrentScanProgress = 0.0f; 
+				
+				MaxLockOnDistance = DistanciaReal;
 				
 				if (TargetInterface->IsAlreadyScanned())
 				{
 					FSignalItemData DatosEscaneados = TargetInterface->GetSignalData();
 					
-					FString Aviso = TEXT("(Ya Escaneado) ");
+					FString Aviso = TEXT("DETECTADO: ");
 					DatosEscaneados.NombreObjeto = FName(*Aviso.Append(DatosEscaneados.NombreObjeto.ToString()));
 					
 					OnScanComplete.Broadcast(DatosEscaneados);
@@ -88,21 +88,28 @@ void USignalScannerComponent::PerformScan()
 				TargetInterface->OnDetected();
 			}
 			
-			CurrentScanProgress += (0.1f / ScanDuration);
-			CurrentScanProgress = FMath::Clamp(CurrentScanProgress, 0.0f, 1.0f);
+			if (DistanciaReal > MaxLockOnDistance)
+			{
+				MaxLockOnDistance = DistanciaReal;
+			}
 			
-			OnSignalDetected.Broadcast(CurrentScanProgress);
+			float DistanciaCien = 250.0f;
 			
-			if (CurrentScanProgress >= 1.0f) 
+			FVector2D RangoDistancia(MaxLockOnDistance, DistanciaCien);
+			FVector2D RangoPorcentaje(0.0f, 1.0f);
+
+			float SignalStrength = FMath::GetMappedRangeValueClamped(RangoDistancia, RangoPorcentaje, DistanciaReal);
+			
+			OnSignalDetected.Broadcast(SignalStrength);
+			
+			if (SignalStrength >= 1.0f) 
 			{
 				FSignalItemData DatosEscaneados = TargetInterface->GetSignalData();
 				OnScanComplete.Broadcast(DatosEscaneados);
 				TargetInterface->OnScanCompleted();
 				
 				CurrentTarget = nullptr;
-				CurrentScanProgress = 0.0f;
-				
-				GetWorld()->GetTimerManager().ClearTimer(ScanTimerHandle);	
+				GetWorld()->GetTimerManager().ClearTimer(ScanTimerHandle); 
 			}
 		}
 		else
@@ -111,7 +118,6 @@ void USignalScannerComponent::PerformScan()
 			{
 				OnScanLost.Broadcast();
 				CurrentTarget = nullptr;
-				CurrentScanProgress = 0.0f;
 			}
 		}
 	}else
@@ -120,7 +126,6 @@ void USignalScannerComponent::PerformScan()
 		{
 			OnScanLost.Broadcast();
 			CurrentTarget = nullptr;
-			CurrentScanProgress = 0.0f;
 		}
 	}
 }

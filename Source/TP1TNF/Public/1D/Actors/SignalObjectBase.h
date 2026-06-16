@@ -25,6 +25,7 @@ public:
 protected:
 	
 	virtual void BeginPlay() override;
+	
 	UFUNCTION(BlueprintImplementableEvent, Category = "Señal|Feedback")
 	void BP_OnFeedbackDetected();
 	
