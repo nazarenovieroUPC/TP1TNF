@@ -3,7 +3,6 @@
 
 #include "TP1TNF/Public/Limpieza/Actors/ActorContaminado.h"
 
-#include "IEditableSkeleton.h"
 #include "TP1TNF/Public/Limpieza/Components/ContaminacionComponent.h"
 
 
