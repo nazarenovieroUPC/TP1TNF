@@ -71,6 +71,20 @@ void USignalScannerComponent::PerformScan()
 			{
 				CurrentTarget = HitActor;
 				CurrentScanProgress = 0.0f; 
+				
+				if (TargetInterface->IsAlreadyScanned())
+				{
+					FSignalItemData DatosEscaneados = TargetInterface->GetSignalData();
+					
+					FString Aviso = TEXT("(Ya Escaneado) ");
+					DatosEscaneados.NombreObjeto = FName(*Aviso.Append(DatosEscaneados.NombreObjeto.ToString()));
+					
+					OnScanComplete.Broadcast(DatosEscaneados);
+					
+					CurrentTarget = nullptr;
+					GetWorld()->GetTimerManager().ClearTimer(ScanTimerHandle);
+					return; 
+				}
 				TargetInterface->OnDetected();
 			}
 			

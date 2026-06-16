@@ -26,6 +26,8 @@ public:
 	
 	virtual FSignalItemData GetSignalData() const = 0;
 	
+	virtual bool IsAlreadyScanned() const = 0;
+	
 	virtual void OnDetected() = 0;
 	
 	virtual void OnScanCompleted() = 0;

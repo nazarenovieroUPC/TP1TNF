@@ -20,6 +20,7 @@ public:
 	virtual FSignalItemData GetSignalData() const override;
 	virtual void OnDetected() override;
 	virtual void OnScanCompleted() override;
+	virtual bool IsAlreadyScanned() const override;
 	
 protected:
 	

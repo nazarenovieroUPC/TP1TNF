@@ -14,24 +14,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36193750-5a8d-4dc5-a34c-1b42e1f96951" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/TP1TNF/Private/1D/Actors/SignalObjectBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TP1TNF/Private/1D/Components/CodexComponent.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TP1TNF/Private/1D/Components/SignalScannerComponent.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TP1TNF/Private/1D/Interfaces/SignalTargetInterface.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TP1TNF/Private/1D/Structures/SignalTypes.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TP1TNF/Public/1D/Actors/SignalObjectBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TP1TNF/Public/1D/Components/CodexComponent.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TP1TNF/Public/1D/Components/SignalScannerComponent.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TP1TNF/Public/1D/Interfaces/SignalTargetInterface.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TP1TNF/Public/1D/Structures/SignalTypes.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TP1TNF.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TP1TNF.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Input/IMC_Default.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Input/IMC_Default.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/HF/YFYBQ72OYLHJQS0TSSXGBV.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/QS/VHQF8JWOATZI5V3ZVY5YTM.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/P3/O43ETCZTFMLWWH1CJ941H2.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TP1TNF/TP1TNFCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TP1TNF/TP1TNFCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TP1TNF/TP1TNFCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TP1TNF/TP1TNFCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Actors/BP_ArtefactiAlien.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Actors/BP_ArtefactiAlien.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TP1TNF/Private/1D/Actors/SignalObjectBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TP1TNF/Private/1D/Actors/SignalObjectBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TP1TNF/Private/1D/Components/SignalScannerComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TP1TNF/Private/1D/Components/SignalScannerComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TP1TNF/Public/1D/Actors/SignalObjectBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TP1TNF/Public/1D/Actors/SignalObjectBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TP1TNF/Public/1D/Interfaces/SignalTargetInterface.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TP1TNF/Public/1D/Interfaces/SignalTargetInterface.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +33,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://2" root0="FORCE_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://1" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TP1TNF/Private/1D/Actors/SignalObjectBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TP1TNF/Private/1D/Components/CodexComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TP1TNF/Private/1D/Components/SignalScannerComponent.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -183,6 +171,7 @@
       <workItem from="1781544776093" duration="6108000" />
       <workItem from="1781565592705" duration="828000" />
       <workItem from="1781582682576" duration="3415000" />
+      <workItem from="1781625125533" duration="950000" />
     </task>
     <servers />
   </component>

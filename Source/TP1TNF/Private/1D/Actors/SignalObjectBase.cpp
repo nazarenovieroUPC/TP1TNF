@@ -37,6 +37,10 @@ void ASignalObjectBase::OnScanCompleted()
 	}
 }
 
+bool ASignalObjectBase::IsAlreadyScanned() const
+{
+	return bIsScanned;
+}
 void ASignalObjectBase::BeginPlay()
 {
 	Super::BeginPlay();
